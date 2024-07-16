@@ -1,11 +1,10 @@
 {
-  "name": "nodejs-app",
+  "name": "telegram-bot-on-railway",
   "version": "1.0.0",
-  "description": "A minimal Node.js web application.",
+  "description": "Telegram bot hosted on Railway",
   "main": "index.js",
-  "author": "alphasec",
-  "license": "MIT",
-   "dependencies": {
+  "dependencies": {
+    "node-telegram-bot-api": "^0.55.0"
   },
   "scripts": {
     "start": "node index.js"
