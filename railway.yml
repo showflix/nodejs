@@ -1,0 +1,9 @@
+services:
+  web:
+    image: "node:14"  # Node.js version
+    env:
+      NODE_ENV: production
+      TELEGRAM_BOT_TOKEN: 5667861898:AAGx1IPp4FjbvWOvzDjzXW8ukoQ3YxlS6qY  # Use GitHub Secrets for sensitive data
+    commands:
+      - npm install  # Install dependencies
+      - npm start    # Start the application
