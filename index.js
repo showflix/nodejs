@@ -1,12 +1,25 @@
-const http = require('http');
-const PORT = 3000;
+const TelegramBot = require('node-telegram-bot-api');
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World!');
-});
+// Replace with your actual Telegram bot token
+const token = process.env.TELEGRAM_BOT_TOKEN;
+const bot = new TelegramBot(token, { polling: true });
 
-server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}/`);
+bot.on('message', async (msg) => {
+    const chatId = msg.chat.id;
+
+    // Check if message contains a document (file)
+    if (msg.document) {
+        const fileId = msg.document.file_id;
+        console.log(`Received file with file_id: ${fileId}`);
+
+        // Now you can use fileId to fetch file details or download the file
+        // For example:
+        try {
+            const fileDetails = await bot.getFile(fileId);
+            console.log('File details:', fileDetails);
+            // Perform further operations with fileDetails
+        } catch (error) {
+            console.error('Error fetching file details:', error);
+        }
+    }
 });
